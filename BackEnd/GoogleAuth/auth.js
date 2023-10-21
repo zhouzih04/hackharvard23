@@ -33,7 +33,7 @@ router.get('/success', async (req, res) => {
         existingUser.displayName = userProfile.displayName;
         await existingUser.save();
         console.log('user data updated: ',existingUser)
-        res.status(200).send(userProfile);
+        res.status(200).json(userProfile);
     }
     else{
         console.log(userProfile)
@@ -42,7 +42,7 @@ router.get('/success', async (req, res) => {
         try {
             const savedUser = await newUser.save()
             console.log('user data stored: ',savedUser)
-            res.status(200).send(userProfile);
+            res.status(200).json(userProfile);
         }
         catch(e)
         {

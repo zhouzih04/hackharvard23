@@ -9,7 +9,7 @@ router.get('/', function(req, res) {
 router.get('/:id', async(req,res) => {
     try {
         const request = await Request.findOne({id: req.params.id});
-        res.status(200).send(request);
+        res.status(200).json(request);
     }catch(err) {
         res.status(400).json({message: err.message});
     }

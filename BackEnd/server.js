@@ -25,6 +25,12 @@ const requestRouter = require('./Request/request');
 app.use('/request',requestRouter);
 app.use(express.json());
 
+const profileRouter = require('./Profile/profile');
+app.use('/profile',profileRouter);
+app.use(express.json());
+
+
+
 const port = process.env.PORT || 3000;
 app.listen(port , () => console.log('App listening on port ' + port));
 
