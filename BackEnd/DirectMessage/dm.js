@@ -13,7 +13,7 @@ const Chat = require ('../databases/chat.js');
 const router = express.Router();
 
 // Route to handle POST request from front end
-router.post('/dm', async (req, res) => {
+router.post('/', async (req, res) => {
     try {
         const { user1Id, user2Id } = req.body;
 
@@ -42,11 +42,11 @@ router.post('/dm', async (req, res) => {
             });
             const convo = await newConversation.save();
             const id = convo._id.toString();
-            convo.id = id;
+            convo.chatId = id;
             await convo.save();
 
             // Call /chat/:id route with new chat ID
-            res.status(201).redirect(`/chat/${chatId}`);
+            await res.status(201).redirect(`/chat/${chatId}`);
         }
     } catch (err) {
         // console.log(err);
