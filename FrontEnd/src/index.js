@@ -1,16 +1,29 @@
 import React, { useState, useEffect } from 'react';
 import ReactDOM from 'react-dom';
+
 import './styles/index.css';
 import App from './App';
-import Login from './pages/Login';
+import { Login, userId, setUserId } from '/Login';
 import reportWebVitals from './reportWebVitals';
 import Dashboard from './pages/Dashboard';
 
+
 const root = ReactDOM.createRoot(document.getElementById('root'));
+
 
 const Index = () => {
   // Define a state variable to store the login status
   const [isLoggedIn, setIsLoggedIn] = useState(false);
+  
+  const user = useSelector(state => state.user);
+  const Redirect = () => {
+    if (userId) {
+      return (<Dashboard />);
+    } else {
+      return (<Login />);
+    }
+  }
+  
 
   // Fetch the login status (you should replace this with your actual API call)
   useEffect(() => {
@@ -25,7 +38,7 @@ const Index = () => {
 
   return (
     <React.StrictMode>
-      {isLoggedIn ? <Dashboard /> : <Login />}
+      {Redirect}
     </React.StrictMode>
   );
 };

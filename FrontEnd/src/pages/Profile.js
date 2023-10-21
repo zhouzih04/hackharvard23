@@ -2,20 +2,43 @@ import React from 'react';
 import { useEffect, useState } from 'react';
 import { useParams } from 'react-router-dom';
 import { Box, Button, Container, Link, Stack, Table, TableBody, TableCell, TableContainer, TableHead, TableRow } from '@mui/material';
+import { Login, userId, setUserId } from './pages/Login';
 import ListingCard from './components/ListingCard';
 import listings from './components/listings.json';
 
 
-export default function Profile() {
-    const { user_id } = useParams();
-    const [ userData, setUserData ] = useState({});
-    //should contain user profile info, sales, requests, aggregated ratings
 
+export default function Profile( user_id ) {
+    // const { user_id } = useParams();
+    const [ userData, setUserData ] = useState({});
     useEffect(() => {
         fetch('user server address')
             .then(res => res.json())
             .then(resJson => setUserData(resJson));
     }, [user_id]);
+
+    //should contain user profile info, sales, requests, aggregated ratings
+    const redirect = () => {
+        setUserId(null);
+        navigate('/Login');
+    }
+    const userButton = () => {
+        if (user_id == userId) {
+            return (
+                <Button variant='contained' sx={{borderRadius: '45px'}} onClick={redirect()}>
+                    Log Out
+                </Button>
+            )
+        } else {
+            return (
+                <Button variant='contained' sx={{borderRadius: '45px'}}>
+                    Start DM
+                </Button>
+            )
+        }
+    }
+
+    
 
     const userOffers = userData.offers.slice(0, 6);
     const userRequests = userData.requests.slice(0, 6);
@@ -26,9 +49,7 @@ export default function Profile() {
                 {/* <img src={userData.profile} width='141px'></img> */}
                 <div className='iconColor' width='140px' sx={{borderRadius: '70px'}} ></div>
                 <h1>{userData.displayName}</h1>
-                <Button variant='contained' sx={{borderRadius: 'flex'}}>
-                    Start DM
-                </Button>
+                {userButton}
             </div>
             <div className='listings'>
                 <div className='userOffers'>
