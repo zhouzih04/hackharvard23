@@ -3,24 +3,42 @@ import React from 'react';
 import { Box, Button, ButtonGroup, Modal } from '@mui/material';
 import { useNavigate } from "react-router-dom";
 
-export default function ItemCard( { itemId, handleClose }) {
+export default function ItemCard( { itemId, type, handleClose }) {
     const [itemData, setItemData] = useState({});
     const [userData, setUserData] = useState({});
 
     const navigate = useNavigate();
-
     useEffect(() => {
-        fetch('get item by id server address')
-            .then(res => res.json())
-            .then(resJson => {
-                setItemData(resJson);
-                fetch('get user by id (poster_id) server address')
-                    .then(res => res.json())
-                    .then(resJson => {
-                        setUserData(resJson);
-                    })
+            if (type=='offer') {
+                fetch(`https://localhost:3000/offer/${itemId}`)
+                .then(res => res.json())
+                .then(resJson => {
+                    setItemData(resJson);
+                    fetch(`https://localhost:3000/profile/${resJson.poster_id}`)
+                        .then(res => res.json())
+                        .then(resJson => {
+                            setUserData(resJson);
+                        })
+            
             });
-    }, [itemId]);
+            } else {
+                fetch(`https://localhost:3000/request/${itemId}`)
+                .then(res => res.json())
+                .then(resJson => {
+                    setItemData(resJson);
+                    fetch(`https://localhost:3000/profile/${resJson.poster_id}`)
+                        .then(res => res.json())
+                        .then(resJson => {
+                            setUserData(resJson);
+                        })
+            
+                });
+            }
+            
+        }, [itemId]);
+    
+
+    
 
     return(
         <Modal

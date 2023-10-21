@@ -34,7 +34,7 @@ function Login() {
             <div id='googleButton'>
                 <GoogleButton
                 onClick={() => { 
-                    fetch('google auth post req')
+                    fetch(`https://localhost:3000/auth/google`)
                         .then(res => res.json())
                         .then(resJson => setUserId(resJson.id));
                 }}

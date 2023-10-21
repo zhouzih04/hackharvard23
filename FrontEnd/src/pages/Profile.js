@@ -3,9 +3,9 @@ import { useEffect, useState } from 'react';
 import { useParams } from 'react-router-dom';
 import { useNavigate } from "react-router-dom";
 import { Box, Button, Container, Link, Stack, Table, TableBody, TableCell, TableContainer, TableHead, TableRow } from '@mui/material';
-import Login, { user } from '../pages/Login.js';
 import ListingCard from '../components/ListingCard';
 import listings from '../components/listings.json';
+import Login, { user } from '../pages/Login';
 
 
 
@@ -13,7 +13,7 @@ export default function Profile( user_id ) {
     // const { user_id } = useParams();
     const [ userData, setUserData ] = useState({});
     useEffect(() => {
-        fetch('user server address')
+        fetch(`https://localhost:3000/profile/${user_id}`)
             .then(res => res.json())
             .then(resJson => setUserData(resJson));
     }, [user_id]);

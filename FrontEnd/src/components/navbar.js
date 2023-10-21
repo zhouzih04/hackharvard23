@@ -4,8 +4,11 @@ import profilepic from '../img/profile.png';
 import { Typography, Button } from '@mui/material';
 import ReactDOM from 'react-dom/client';
 import Profile from '../pages/Profile';
+import Login, {user} from  '../pages/Login';
+import { useNavigate } from "react-router-dom";
 
 function Navbar() {
+    const navigate = useNavigate();
     return (
     <div
       className="flex w-full"
@@ -83,7 +86,7 @@ function Navbar() {
               paddingLeft: '0.5rem',
             }}
           > my profile </Typography>
-          <img src={profilepic} style={{paddingLeft: '0.5rem'}}
+          <img src={profilepic} style={{paddingLeft: '0.5rem'}} onClick={navigate('../pages/Profile')}
            alt="Profile" width='30px' height='30px'/>
         </div>
       </div>

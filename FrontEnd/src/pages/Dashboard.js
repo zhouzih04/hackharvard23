@@ -3,6 +3,7 @@ import React from 'react';
 import { useEffect, useState } from 'react';
 import { useParams } from 'react-router-dom';
 import { Link } from "react-router-dom";
+import Login, {user} from  '../pages/Login';
 
 import { Box, Button } from '@mui/material';
 import { styled } from '@mui/material/styles';
@@ -14,13 +15,18 @@ import ItemCard from '../components/ItemCard';
 
 
 function Dashboard() {
-    const [itemData, setItemData] = useState([{}]);
+    const [listData, setListData] = useState([]);
+    useEffect(() => {
+        fetch(`http://localhost:3000/home/offers`)
+            .then(res => res.json())
+            .then(resJson => setListData(resJson.offers));
+    }, []);
 
     const [selectedItemId, setSelectedItemId] = useState(null);
 
   return (
     <div className="r">
-      {selectedItemId && < ItemCard itemId={selectedItemId} handleClose={() => setSelectedItemId(null)} />}
+      {selectedItemId && < ItemCard itemId={selectedItemId} type ='offer' handleClose={() => setSelectedItemId(null)} />}
       <Navbar />
       <Box sx={{ padding: '0 80px' }}>
         <Box sx={{ display: 'flex', alignItems: 'center' }}>
@@ -34,7 +40,7 @@ function Dashboard() {
             gap: '1.5rem',
           }}
         >
-          {listings.map((listing, index) => (
+          {listData.map((listing, index) => (
             <Link onClick={() => setSelectedItemId(listing.id)}>
                 <ListingCard
                 location={listing.location}
