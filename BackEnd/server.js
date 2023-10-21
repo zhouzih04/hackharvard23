@@ -13,9 +13,9 @@ const dmRouter = require('./DirectMessage/dm');
 app.use('/dm',dmRouter);
 app.use(express.json())
 
-// const chatRouter = require('./DirectMessage/chat');
-// app.use('/chat',chatRouter);
-// app.use(express.json())
+const chatRouter = require('./DirectMessage/chat');
+app.use('/chat',chatRouter);
+app.use(express.json())
 
 const offerRouter = require('./Offer/offer');
 app.use('/offer',offerRouter);

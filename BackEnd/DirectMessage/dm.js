@@ -46,11 +46,12 @@ router.post('/', async (req, res) => {
             });
             const convo = await newConversation.save();
             const id = convo._id.toString();
+            
             convo.chatId = id;
             await convo.save();
 
             // Call /chat/:id route with new chat ID
-            await res.status(201).redirect(`/chat/${chatId}`);
+            await res.status(201).redirect(`/chat/${convo.chatId}`);
         }
     } catch (err) {
         // console.log(err);
