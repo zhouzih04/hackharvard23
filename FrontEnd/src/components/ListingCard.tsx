@@ -6,25 +6,20 @@ import Typography from '@mui/material/Typography';
 import { CardActionArea, Box } from '@mui/material';
 
 type ListingCardProps = {
-  /** will prob only have one user per listing, whether offerer or offeree*/
-  item: string;
-  item_description: string;
-  item_tags: string; //split comma spaced tags? talk to database
-  item_price: number;
-  user: string;
-  user_rating: number;
-  user_location: string;
-  imagePath: string;
+  picture_id: string;
+  poster_id: string;
+  location: string;
+  name: string;
+  description: string;
+  price_range: number;
 };
 function ListingCard({
-  item,
-  item_description,
-  item_tags,
-  item_price,
-  user,
-  user_rating,
-  user_location,
-  imagePath,
+  picture_id,
+  poster_id,
+  location,
+  name,
+  description,
+  price_range,
 }: ListingCardProps) {
   return (
     <Card sx={{ flexBasis: '23%' }}>
@@ -32,8 +27,8 @@ function ListingCard({
         <CardMedia
           component="img"
           height="300"
-          image={imagePath}
-          alt={user_location}
+          image={picture_id}
+          alt={location}
         />
         <CardContent>
           <Box sx={{ display: 'flex', justifyContent: 'space-between' }}>
@@ -43,15 +38,14 @@ function ListingCard({
               component="div"
               sx={{ fontWeight: 600, fontSize: '1rem' }}
             >
-              {user_location}
+              {location}
           </Typography>
-            <Typography>{user_rating}</Typography>
           </Box>
           <Typography variant="body2" color="text.secondary">
-            {item_description}
+            {description}
           </Typography>
           <Typography>
-            <strong>${item_price}</strong> night
+            <strong>${price_range}</strong> night
           </Typography>
         </CardContent>
       </CardActionArea>

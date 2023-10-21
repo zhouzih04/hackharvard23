@@ -12,7 +12,6 @@ function Dashboard() {
       <Header />
       <Box sx={{ padding: '0 80px' }}>
         <Box sx={{ display: 'flex', alignItems: 'center' }}>
-          <FilterCarousel />
           <Button
             type="button"
             style={{
@@ -44,8 +43,10 @@ function Dashboard() {
             <ListingCard
               location={listing.location}
               description={listing.description}
-              price={listing.price}
-              rating={listing.rating}
+              price_range={listing.price_range}
+              id={listing.id}
+              name={listing.name}
+              poster_id={listing.poster_id}
               imagePath={`${process.env.PUBLIC_URL}/images/image${
                 index + 1
               }.jpeg`}
