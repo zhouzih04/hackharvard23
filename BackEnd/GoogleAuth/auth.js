@@ -1,21 +1,19 @@
 const express = require('express');
 const app = express();
+const router = express.Router()
 const session = require('express-session');
 const user = require('../databases/user')
-app.set('view engine', 'ejs');
-app.use(express.json())
+
+app.use(express.json());
 app.use(session({
   resave: false,
   saveUninitialized: true,
   secret: 'SECRET' 
 }));
 
-app.get('/', function(req, res) {
-  res.render('pages/auth');
-});
-
-const port = process.env.PORT || 3000;
-app.listen(port , () => console.log('App listening on port ' + port));
+// app.get('/', function(req, res) {
+//   res.render('pages/auth');
+// });
 
 const passport = require('passport');
 var userProfile;
@@ -24,8 +22,10 @@ app.use(passport.initialize());
 app.use(passport.session());
 
 app.set('view engine', 'ejs');
-
-app.get('/success', async (req, res) => {
+router.get('/', function(req, res) {
+  res.render('pages/auth');
+})
+router.get('/success', async (req, res) => {
     // Add the userProfile to MongoDB here!
     const existingUser = await user.findOne({id: userProfile.id})
     if (existingUser)
@@ -49,7 +49,7 @@ app.get('/success', async (req, res) => {
         }
     }
 });
-app.get('/error', (req, res) => res.send("error logging in"));
+router.get('/error', (req, res) => res.send("error logging in"));
 
 passport.serializeUser(function(user, cb) {
   cb(null, user);
@@ -73,12 +73,14 @@ passport.use(new GoogleStrategy({
   }
 ));
  
-app.get('/auth/google', 
+router.get('/google', 
   passport.authenticate('google', { scope : ['profile', 'email'] }));
  
-app.get('/auth/google/callback', 
+router.get('/google/callback', 
   passport.authenticate('google', { failureRedirect: '/error' }),
   function(req, res) {
     // Successful authentication, redirect success.
     res.redirect('/success');
   });
+
+module.exports = router;
