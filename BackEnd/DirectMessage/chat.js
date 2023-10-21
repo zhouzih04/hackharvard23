@@ -1,44 +1,57 @@
-const { MongoClient } = require('mongodb');
-
-// Connect to the MongoDB database
-const uri = 'mongodb://localhost:27017';
-const client = new MongoClient(uri);
-await client.connect();
-const database = client.db('mydb');
-const chatsCollection = database.collection('chats');
-
-async function sendMessage(chatId, user1Id, user2Id, messageContent) {
-    // Create a new message object with the message content, sender ID, and timestamp
-    const message = {
-        content: messageContent,
-        senderId: user1Id,
-    };
+// Import the necessary modules and set up the MongoDB connection
+const express = require('express');
+const app = express();
+const Chat = require('./databases/chat.js');
+const router = express.Router();
 
 
+// Create a POST route that takes in the chatID parameter and the chat data in JSON format
+router.post('/chat/:chatID', (req, res) => {
+    const user_id = req.body.user_id;
+    const text = req.body.text;
+    const chatID = req.params.chatID;
 
-    
-    // Find the chat document in the database with the given chat ID
-    const chat = await chatsCollection.findOne({ chatId });
 
-    // If the chat document does not exist, create a new chat document with the chat ID, user 1 ID, user 2 ID, and an empty messages array
-    if (!chat) {
-        const newChat = {
-            chatId,
-            user1Id,
-            user2Id,
-            messages: []
-        };
-        await chatsCollection.insertOne(newChat);
-        chat = newChat;
-    }
+    // Use the chatID to find the chat in the database
+    Chat.findOne({ chatID }, (err, chat) => {
+        if (err) {
+            console.log(err);
+            res.status(500).send('Internal server error');
+        } else {
+            // Push the new message to the content array
+            chat.content.push({ user_id: user_id, 
+                                text: text });
+            
+            chat.save((err, savedChat) => {
+                if (err) {
+                    console.log(err);
+                    res.status(500).send('Internal server error');
+                } else {
+                    res.status(200).send(savedChat);
+                }
+            });
+        }
+    });
+});
 
-    // Add the new message object to the messages array in the chat document
-    chat.messages.push(message);
+// Create a GET route that takes in the chatID parameter
+app.get('/chat/:chatID', (req, res) => {
+    const chatID = req.params.chatID;
 
-    // Update the chat document in the database with the new messages array
-    await chatsCollection.updateOne({ chatId }, { $set: { messages: chat.messages } });
+    // Use the chatID to find the chat in the database
+    Chat.findOne({ chatID }, (err, chat) => {
+        if (err) {
+            console.log(err);
+            res.status(500).send('Internal server error');
+        } else {
+            if (!chat) {
+                res.status(404).send('Chat not found');
+            } else {
+                // Return the entire chat history associated with that chatID
+                res.status(200).send(chat);
+            }
+        }
+    });
+});
 
-    // Find the updated chat document in the database and return it
-    const updatedChat = await chatsCollection.findOne({ chatId });
-    return updatedChat;
-}
+module.exports = router;
