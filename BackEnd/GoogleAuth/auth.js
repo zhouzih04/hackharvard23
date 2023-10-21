@@ -36,7 +36,9 @@ router.get('/success', async (req, res) => {
         res.status(200).send(userProfile);
     }
     else{
-        const newUser = new User(userProfile)
+        console.log(userProfile)
+        userProfile.email = userProfile.emails[0].value;
+        const newUser = new user(userProfile)
         try {
             const savedUser = await newUser.save()
             console.log('user data stored: ',savedUser)
@@ -74,13 +76,13 @@ passport.use(new GoogleStrategy({
 ));
  
 router.get('/google', 
-  passport.authenticate('google', { scope : ['profile', 'email'] }));
+  passport.authenticate('google', { scope : ['profile', 'email'] ,session:false}));
  
 router.get('/google/callback', 
-  passport.authenticate('google', { failureRedirect: '/error' }),
+  passport.authenticate('google', { failureRedirect: '/error' ,session:false}),
   function(req, res) {
     // Successful authentication, redirect success.
-    res.redirect('/success');
+    res.redirect('/auth/success');
   });
 
 module.exports = router;

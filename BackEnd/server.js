@@ -1,7 +1,7 @@
 const express = require('express')
 
 const app = express();
-
+require('./databases/db')
 app.set('view engine', 'ejs');
 
 const authRouter = require('./GoogleAuth/auth');
