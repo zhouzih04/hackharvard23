@@ -9,7 +9,7 @@ import { styled } from '@mui/material/styles';
 import ListingCard from '../components/ListingCard';
 import listings from '../components/listings.json';
 
-import itemCard from '../components/itemCard';
+import itemCard from '../components/ItemCard';
 
 
 function Dashboard() {
@@ -19,7 +19,7 @@ function Dashboard() {
 
   return (
     <div className="r">
-      {slectedSongId && < ItemCard itemId={selectedItemId} handleClose={() => setSelectedSongId(null)} />}
+      {selectedItemId && < ItemCard itemId={selectedItemId} handleClose={() => setSelectedSongId(null)} />}
       <Box sx={{ padding: '0 80px' }}>
         <Box sx={{ display: 'flex', alignItems: 'center' }}>
           
@@ -34,17 +34,19 @@ function Dashboard() {
           }}
         >
           {listings.map((listing, index) => (
-            <ListingCard
-              location={listing.location}
-              description={listing.description}
-              price_range={listing.price_range}
-              id={listing.id}
-              name={listing.name}
-              poster_id={listing.poster_id}
-              /*imagePath={`${process.env.PUBLIC_URL}/images/image${
-                index + 1
-              }.jpeg`}*/
-            />
+            <Link onClick={() => setSelectedItemId(listing.id)}>
+                <ListingCard
+                location={listing.location}
+                description={listing.description}
+                price_range={listing.price_range}
+                id={listing.id}
+                name={listing.name}
+                poster_id={listing.poster_id}
+                /*imagePath={`${process.env.PUBLIC_URL}/images/image${
+                    index + 1
+                }.jpeg`}*/
+                />
+            </Link>
           ))}
         </Box>
       </Box>

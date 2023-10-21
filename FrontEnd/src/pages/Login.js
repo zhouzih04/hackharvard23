@@ -1,9 +1,21 @@
 import React from 'react';
 import logo from '../img/logo.png'
 import '../styles/global.css'
-//import GoogleButton from 'react-google-button'
+import GoogleButton from 'react-google-button'
+import { useState } from 'react';
 
 function Login() {
+    // function setCurrentUserId(id) {
+    //     const UPDATE_USER = 'UPDATE_USER';
+    //     const addUser = (id) =>  {
+    //         return {
+    //             type: UPDATE_USER,
+    //             id,
+    //         }
+    //     }
+    // }
+    const [userId, setUserId] = useState(null);
+
     return (
         <div className='container' id='loginContainer'>
             <div className='title'>
@@ -18,9 +30,13 @@ function Login() {
             {/* figure out this shit later THIS IS THE FANCY GOOGLE SIGNIN BUTTON*/}
             {/* WE LIKE FANCY STUFF */}
             <div id='googleButton'>
-                {/*<GoogleButton
-                onClick={() => { console.log('Google button clicked') }}
-    />*/}
+                <GoogleButton
+                onClick={() => { 
+                    fetch('google auth post req')
+                        .then(res => res.json())
+                        .then(resJson => setUserId(resJson.id));
+                }}
+                />
             </div>
 
             {/*<div className='buttonWrapper'>
@@ -46,4 +62,4 @@ function Login() {
     );
 }
 
-export default Login;
+export default { Login, userId, setUserId };
