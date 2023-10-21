@@ -1,7 +1,7 @@
 import React from 'react';
 import logo from '../img/logo.png'
 import '../styles/global.css'
-import GoogleButton from 'react-google-button'
+//import GoogleButton from 'react-google-button'
 
 function Login() {
     return (
@@ -18,12 +18,12 @@ function Login() {
             {/* figure out this shit later THIS IS THE FANCY GOOGLE SIGNIN BUTTON*/}
             {/* WE LIKE FANCY STUFF */}
             <div id='googleButton'>
-                <GoogleButton
+                {/*<GoogleButton
                 onClick={() => { console.log('Google button clicked') }}
-                />
+    />*/}
             </div>
 
-            {/* <div className='buttonWrapper'>
+            {/*<div className='buttonWrapper'>
                 <button class="gsi-material-button">
                     <div class="gsi-material-button-state"></div>
                     <div class="gsi-material-button-content-wrapper">
@@ -40,7 +40,7 @@ function Login() {
                         <span style="display: none;">Sign in with Google</span>
                     </div>
                 </button>
-            </div> */}
+            </div>*/}
 
         </div>
     );
