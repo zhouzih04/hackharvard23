@@ -2,20 +2,18 @@ const express = require('express');
 // const mongoose = require('mongoose');
 
 const app = express();
-// const port = 3000;
 
-// Connect to MongoDB database
-// mongoose.connect('mongodb://localhost/5000', {
-//     useNewUrlParser: true,
-//
 
 const Chat = require ('../databases/chat.js');
 const router = express.Router();
 
 // Route to handle POST request from front end
-router.post('/dm', async (req, res) => {
+router.post('/', async (req, res) => {
     try {
-        const { user1Id, user2Id } = req.body;
+        const user1Id = req.body.user1Id;
+        const user2Id = req.body.user2Id;
+        console.log(user1Id);
+        console.log(user2Id);
 
         // Check if conversation already exists
         const conversation = await Chat.findOne({
@@ -27,6 +25,12 @@ router.post('/dm', async (req, res) => {
             user2Id: user1Id
         });
 
+        // if (conversation || conversation2) {
+        //     res.status(400).json({ message: "Conversation already exists" });
+        // } else {
+        //     res.status(200).json({ message: "Conversation does not exist" });
+        // }
+
         if (conversation) {
             // Conversation already exists, retrieve chat ID and call /chat/:id route
             const chatId = conversation.chatId;
@@ -37,16 +41,17 @@ router.post('/dm', async (req, res) => {
         } else {
             // Conversation does not exist, generate new chat ID and insert into database
             const newConversation = new Chat({
-                user1Id,
-                user2Id
+                user1Id: user1Id,
+                user2Id: user2Id
             });
             const convo = await newConversation.save();
-            const id = convo._id.toString();
-            convo.id = id;
-            await convo.save();
+            // const id = convo._id.toString();
+            // convo.id = id;
+            // await convo.save();
 
-            // Call /chat/:id route with new chat ID
+            // // Call /chat/:id route with new chat ID
             res.status(201).redirect(`/chat/${chatId}`);
+        // res.status(400).json({ message: "Not implemented" });
         }
     } catch (err) {
         // console.log(err);
