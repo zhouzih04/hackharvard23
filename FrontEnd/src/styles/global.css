@@ -1,0 +1,22 @@
+.container {
+    align-items: center;
+    justify-content: center;
+    vertical-align: middle;
+    margin: auto;
+    padding: auto;
+}
+
+
+.title {
+    display: flex;
+    align-items: center;
+    justify-content: center;
+}
+
+#loginContainer {
+    padding-top: 200px;
+}
+
+h1 #loginContainer {
+    size: 50px;
+}
