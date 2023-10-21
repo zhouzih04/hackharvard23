@@ -1,14 +1,23 @@
 import './dashboard.css';
-import React from 'react';
+import { useEffect, useState } from 'react';
+import { useParams } from 'react-router-dom';
 import { Box, Button } from '@mui/material';
 import { styled } from '@mui/material/styles';
 //import Header from './header';
 import ListingCard from './components/ListingCard';
 import listings from './components/listings.json';
 
+import itemCard from '../components/itemCard';
+
+
 function Dashboard() {
+    const [itemData, setItemData] = useState([{}]);
+
+    const [selectedItemId, setSelectedItemId] = useState(null);
+
   return (
     <div className="r">
+        {slectedSongId && < ItemCard itemId={selectedItemId} handleClose={() => setSelectedSongId(null)} />}
       <Header />
       <Box sx={{ padding: '0 80px' }}>
         <Box sx={{ display: 'flex', alignItems: 'center' }}>
