@@ -1,10 +1,11 @@
 import React from 'react';
 import { useEffect, useState } from 'react';
 import { useParams } from 'react-router-dom';
+import { useNavigate } from "react-router-dom";
 import { Box, Button, Container, Link, Stack, Table, TableBody, TableCell, TableContainer, TableHead, TableRow } from '@mui/material';
-import { Login, userId, setUserId } from './pages/Login';
-import ListingCard from './components/ListingCard';
-import listings from './components/listings.json';
+import Login, { user } from '../pages/Login.js';
+import ListingCard from '../components/ListingCard';
+import listings from '../components/listings.json';
 
 
 
@@ -17,13 +18,14 @@ export default function Profile( user_id ) {
             .then(resJson => setUserData(resJson));
     }, [user_id]);
 
+    const navigate = useNavigate();
+
     //should contain user profile info, sales, requests, aggregated ratings
     const redirect = () => {
-        setUserId(null);
         navigate('/Login');
     }
     const userButton = () => {
-        if (user_id == userId) {
+        if (user_id == user) {
             return (
                 <Button variant='contained' sx={{borderRadius: '45px'}} onClick={redirect()}>
                     Log Out
@@ -59,7 +61,7 @@ export default function Profile( user_id ) {
                                 picture_url={listing.picture_url}
                                 poser_id={listing.poster_id}
                                 location={listing.location}
-                                name={listing.name}
+                                item_name={listing.name}
                                 description={listing.description}
                                 price_range={listing.price_range}
                             />
@@ -74,7 +76,7 @@ export default function Profile( user_id ) {
                                     picture_url={listing.picture_url}
                                     poser_id={listing.poster_id}
                                     location={listing.location}
-                                    name={listing.name}
+                                    item_name={listing.name}
                                     description={listing.description}
                                     price_range={listing.price_range}
                                 />

@@ -1,9 +1,13 @@
 import { useEffect, useState } from 'react';
+import React from 'react';
 import { Box, Button, ButtonGroup, Modal } from '@mui/material';
+import { useNavigate } from "react-router-dom";
 
 export default function ItemCard( { itemId, handleClose }) {
     const [itemData, setItemData] = useState({});
     const [userData, setUserData] = useState({});
+
+    const navigate = useNavigate();
 
     useEffect(() => {
         fetch('get item by id server address')
