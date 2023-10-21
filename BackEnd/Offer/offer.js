@@ -9,7 +9,7 @@ router.get('/', function(req, res) {
 router.get('/:id', async(req,res) => {
     try {
         const offer = await Offer.findOne({id: req.params.id});
-        res.status(200).send(offer);
+        res.status(200).json(offer);
     }catch(err) {
         res.status(400).json({message: err.message});
     }
