@@ -1,0 +1,99 @@
+[
+    {
+      "picture_id": "1",
+      "poster_id": "user123",
+      "location": "Boston, MA",
+      "name": "Chef's Knife Set",
+      "description": "High-quality chef's knife set for all your culinary needs.",
+      "price_range": 2
+    },
+    {
+      "picture_id": "2",
+      "poster_id": "user456",
+      "location": "Boston, MA",
+      "name": "Power Drill Kit",
+      "description": "Complete power drill kit with various attachments for DIY projects.",
+      "price_range": 1
+    },
+    {
+      "picture_id": "3",
+      "poster_id": "user789",
+      "location": "Boston, MA",
+      "name": "Home Tool Set",
+      "description": "Comprehensive set of essential home tools for repairs and maintenance.",
+      "price_range": 2
+    },
+    {
+      "picture_id": "4",
+      "poster_id": "user101",
+      "location": "Boston, MA",
+      "name": "Blender and Juicer Combo",
+      "description": "A combination of a powerful blender and a juicer for healthy living.",
+      "price_range": 2
+    },
+    {
+      "picture_id": "5",
+      "poster_id": "user234",
+      "location": "Boston, MA",
+      "name": "Painting Supplies Kit",
+      "description": "Complete set of painting supplies for your artistic projects.",
+      "price_range": 1
+    },
+    {
+      "picture_id": "6",
+      "poster_id": "user567",
+      "location": "Boston, MA",
+      "name": "Cookware Set",
+      "description": "High-quality cookware set for your kitchen needs.",
+      "price_range": 2
+    },
+    {
+      "picture_id": "7",
+      "poster_id": "user890",
+      "location": "Boston, MA",
+      "name": "Screwdriver Set",
+      "description": "A set of precision screwdrivers for various tasks around the house.",
+      "price_range": 0
+    },
+    {
+      "picture_id": "8",
+      "poster_id": "user123",
+      "location": "Boston, MA",
+      "name": "Toaster and Sandwich Maker",
+      "description": "A combination of a toaster and a sandwich maker for quick meals.",
+      "price_range": 1
+    },
+    {
+      "picture_id": "9",
+      "poster_id": "user456",
+      "location": "Boston, MA",
+      "name": "Cordless Vacuum Cleaner",
+      "description": "Efficient cordless vacuum cleaner for hassle-free cleaning.",
+      "price_range": 2
+    },
+    {
+      "picture_id": "10",
+      "poster_id": "user789",
+      "location": "Boston, MA",
+      "name": "Measuring Tool Set",
+      "description": "Set of precise measuring tools for accurate measurements in DIY projects.",
+      "price_range": 0
+    },
+    {
+      "picture_id": "11",
+      "poster_id": "user101",
+      "location": "Boston, MA",
+      "name": "Coffee Maker",
+      "description": "Coffee maker with multiple brew options for coffee enthusiasts.",
+      "price_range": 1
+    },
+    {
+      "picture_id": "12",
+      "poster_id": "user234",
+      "location": "Boston, MA",
+      "name": "Gardening Tools",
+      "description": "A collection of essential gardening tools for maintaining your garden.",
+      "price_range": 2
+    }
+  ]
+  

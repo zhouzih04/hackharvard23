@@ -1,22 +1,21 @@
-import './styles/App.css';
 import React from 'react';
-import ReactDOM from 'react-dom/client';
+import { ThemeProvider } from '@mui/material/styles';
+import { CssBaseline } from '@mui/material';
+import { BrowserRouter, Routes, Route } from 'react-router-dom';
+
+
+
+import Dashboard from './pages/Dashboard.js';
 function App() {
   return (
     <div className="App">
-      <header className="App-header">
-        <p>
-          Edit <code>src/App.js</code> and save to reload.
-        </p>
-        <a
-          className="App-link"
-          href="https://reactjs.org"
-          target="_blank"
-          rel="noopener noreferrer"
-        >
-          Learn React
-        </a>
-      </header>
+      <BrowserRouter>
+              <CssBaseline>
+                <Routes>
+                    <Route path="/dashboard" element={<Dashboard />} />
+                </Routes>
+              </CssBaseline>
+      </BrowserRouter>
     </div>
   );
 }
