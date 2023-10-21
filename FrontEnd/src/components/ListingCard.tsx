@@ -6,7 +6,7 @@ import Typography from '@mui/material/Typography';
 import { CardActionArea, Box } from '@mui/material';
 
 type ListingCardProps = {
-  picture_id: string;
+  picture_url: string;
   poster_id: string;
   location: string;
   name: string;
@@ -14,7 +14,7 @@ type ListingCardProps = {
   price_range: number;
 };
 function ListingCard({
-  picture_id,
+  picture_url,
   poster_id,
   location,
   name,
@@ -22,12 +22,14 @@ function ListingCard({
   price_range,
 }: ListingCardProps) {
   return (
-    <Card sx={{ flexBasis: '23%' }}>
+    <Card sx={{ flexBasis: '23%', 
+    borderRadius: '1rem',
+    paddingBottom: '0.5rem'}}>
       <CardActionArea>
         <CardMedia
           component="img"
           height="300"
-          image={picture_id}
+          image={picture_url}
           alt={location}
         />
         <CardContent>

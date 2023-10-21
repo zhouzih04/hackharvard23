@@ -5,9 +5,9 @@ import React from 'react';
 
 import { Box, Button } from '@mui/material';
 import { styled } from '@mui/material/styles';
-//import Header from './header';
 import ListingCard from '../components/ListingCard';
 import listings from '../components/listings.json';
+import Navbar from '../components/navbar';
 
 import itemCard from '../components/ItemCard';
 
@@ -22,7 +22,6 @@ function Dashboard() {
       {selectedItemId && < ItemCard itemId={selectedItemId} handleClose={() => setSelectedSongId(null)} />}
       <Box sx={{ padding: '0 80px' }}>
         <Box sx={{ display: 'flex', alignItems: 'center' }}>
-          
         </Box>
         <Box
           sx={{
@@ -30,7 +29,7 @@ function Dashboard() {
             display: 'flex',
             flexWrap: 'wrap',
             justifyContent: 'space-between',
-            gap: '.5rem',
+            gap: '1.5rem',
           }}
         >
           {listings.map((listing, index) => (
@@ -42,9 +41,6 @@ function Dashboard() {
                 id={listing.id}
                 name={listing.name}
                 poster_id={listing.poster_id}
-                /*imagePath={`${process.env.PUBLIC_URL}/images/image${
-                    index + 1
-                }.jpeg`}*/
                 />
             </Link>
           ))}

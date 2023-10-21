@@ -1,6 +1,6 @@
 [
     {
-      "picture_id": "1",
+      "picture_url": "https://qvc.scene7.com/is/image/QVC/k/22/k76922.001",
       "poster_id": "user123",
       "location": "Boston, MA",
       "name": "Chef's Knife Set",
@@ -8,7 +8,7 @@
       "price_range": 2
     },
     {
-      "picture_id": "2",
+      "picture_url": "https://qvc.scene7.com/is/image/QVC/k/22/k76922.001",
       "poster_id": "user456",
       "location": "Boston, MA",
       "name": "Power Drill Kit",
@@ -16,7 +16,7 @@
       "price_range": 1
     },
     {
-      "picture_id": "3",
+      "picture_url": "https://qvc.scene7.com/is/image/QVC/k/22/k76922.001",
       "poster_id": "user789",
       "location": "Boston, MA",
       "name": "Home Tool Set",
@@ -24,7 +24,7 @@
       "price_range": 2
     },
     {
-      "picture_id": "4",
+    "picture_url": "https://qvc.scene7.com/is/image/QVC/k/22/k76922.001",
       "poster_id": "user101",
       "location": "Boston, MA",
       "name": "Blender and Juicer Combo",
@@ -32,7 +32,7 @@
       "price_range": 2
     },
     {
-      "picture_id": "5",
+        "picture_url": "https://qvc.scene7.com/is/image/QVC/k/22/k76922.001",
       "poster_id": "user234",
       "location": "Boston, MA",
       "name": "Painting Supplies Kit",
@@ -40,7 +40,7 @@
       "price_range": 1
     },
     {
-      "picture_id": "6",
+        "picture_url": "https://qvc.scene7.com/is/image/QVC/k/22/k76922.001",
       "poster_id": "user567",
       "location": "Boston, MA",
       "name": "Cookware Set",
@@ -48,7 +48,7 @@
       "price_range": 2
     },
     {
-      "picture_id": "7",
+        "picture_url": "https://qvc.scene7.com/is/image/QVC/k/22/k76922.001",
       "poster_id": "user890",
       "location": "Boston, MA",
       "name": "Screwdriver Set",
@@ -56,7 +56,7 @@
       "price_range": 0
     },
     {
-      "picture_id": "8",
+        "picture_url": "https://qvc.scene7.com/is/image/QVC/k/22/k76922.001",
       "poster_id": "user123",
       "location": "Boston, MA",
       "name": "Toaster and Sandwich Maker",
@@ -64,7 +64,7 @@
       "price_range": 1
     },
     {
-      "picture_id": "9",
+        "picture_url": "https://qvc.scene7.com/is/image/QVC/k/22/k76922.001",
       "poster_id": "user456",
       "location": "Boston, MA",
       "name": "Cordless Vacuum Cleaner",
@@ -72,7 +72,7 @@
       "price_range": 2
     },
     {
-      "picture_id": "10",
+        "picture_url": "https://qvc.scene7.com/is/image/QVC/k/22/k76922.001",
       "poster_id": "user789",
       "location": "Boston, MA",
       "name": "Measuring Tool Set",
@@ -80,7 +80,7 @@
       "price_range": 0
     },
     {
-      "picture_id": "11",
+        "picture_url": "https://qvc.scene7.com/is/image/QVC/k/22/k76922.001",
       "poster_id": "user101",
       "location": "Boston, MA",
       "name": "Coffee Maker",
@@ -88,7 +88,7 @@
       "price_range": 1
     },
     {
-      "picture_id": "12",
+        "picture_url": "https://qvc.scene7.com/is/image/QVC/k/22/k76922.001",
       "poster_id": "user234",
       "location": "Boston, MA",
       "name": "Gardening Tools",
