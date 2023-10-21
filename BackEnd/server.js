@@ -29,7 +29,9 @@ const profileRouter = require('./Profile/profile');
 app.use('/profile',profileRouter);
 app.use(express.json());
 
-
+const dashboardRouter = require('./Dashboard/dashboard');
+app.use('/home',dashboardRouter);
+app.use(express.json());
 
 const port = process.env.PORT || 3000;
 app.listen(port , () => console.log('App listening on port ' + port));
