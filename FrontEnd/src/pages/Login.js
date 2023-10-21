@@ -3,6 +3,9 @@ import logo from '../img/logo.png'
 import '../styles/global.css'
 import GoogleButton from 'react-google-button'
 import { useState } from 'react';
+import { useNavigate } from "react-router-dom";
+
+const userId = '';
 
 function Login() {
     // function setCurrentUserId(id) {
@@ -14,8 +17,7 @@ function Login() {
     //         }
     //     }
     // }
-    const [userId, setUserId] = useState(null);
-
+    const [userId, setUserId] = useState('');
     return (
         <div className='container' id='loginContainer'>
             <div className='title'>
@@ -62,4 +64,6 @@ function Login() {
     );
 }
 
-export default { Login, userId, setUserId };
+
+export default Login;
+export const user = userId;

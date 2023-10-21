@@ -1,7 +1,8 @@
 import '../styles/dashboard.css';
+import React from 'react';
 import { useEffect, useState } from 'react';
 import { useParams } from 'react-router-dom';
-import React from 'react';
+import { Link } from "react-router-dom";
 
 import { Box, Button } from '@mui/material';
 import { styled } from '@mui/material/styles';
@@ -9,7 +10,7 @@ import ListingCard from '../components/ListingCard';
 import listings from '../components/listings.json';
 import Navbar from '../components/navbar';
 
-import itemCard from '../components/ItemCard';
+import ItemCard from '../components/ItemCard';
 
 
 function Dashboard() {
@@ -19,7 +20,8 @@ function Dashboard() {
 
   return (
     <div className="r">
-      {selectedItemId && < ItemCard itemId={selectedItemId} handleClose={() => setSelectedSongId(null)} />}
+      {selectedItemId && < ItemCard itemId={selectedItemId} handleClose={() => setSelectedItemId(null)} />}
+      <Navbar />
       <Box sx={{ padding: '0 80px' }}>
         <Box sx={{ display: 'flex', alignItems: 'center' }}>
         </Box>
@@ -39,7 +41,7 @@ function Dashboard() {
                 description={listing.description}
                 price_range={listing.price_range}
                 id={listing.id}
-                name={listing.name}
+                item_name={listing.name}
                 poster_id={listing.poster_id}
                 />
             </Link>
