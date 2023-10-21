@@ -9,9 +9,9 @@ app.use('/auth',authRouter);
 app.use(express.json())
 
 
-// const dmRouter = require('./DirectMessage/dm');
-// app.use('/dm',dmRouter);
-// app.use(express.json())
+const dmRouter = require('./DirectMessage/dm');
+app.use('/dm',dmRouter);
+app.use(express.json())
 
 // const chatRouter = require('./DirectMessage/chat');
 // app.use('/chat',chatRouter);
