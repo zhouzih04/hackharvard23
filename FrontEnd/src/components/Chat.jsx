@@ -17,7 +17,7 @@ export default function Chat(){
 
     useEffect(() => {
         console.log('FETCHing from backend');
-        fetch('http://localhost:3000/api/chat')
+        fetch('http://localhost:3000/dm')
         .then(response => response.json())
         .then(data => {
             console.log('Data:', data);
@@ -26,7 +26,7 @@ export default function Chat(){
     }, []);
 
     useEffect(() => {
-        webSocket.current.onmessage = (event) => {
+        currentMessage = (event) => {
             const chatMessageDto = JSON.parse(event.data);
             console.log('Message:', chatMessageDto);
             setChatMessages([...chatMessages, {
