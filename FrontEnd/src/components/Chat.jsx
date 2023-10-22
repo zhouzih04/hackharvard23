@@ -26,7 +26,7 @@ export default function Chat(){
     }, []);
 
     useEffect(() => {
-        currentMessage = (event) => {
+        webSocket.current.message = (event) => {
             const chatMessageDto = JSON.parse(event.data);
             console.log('Message:', chatMessageDto);
             setChatMessages([...chatMessages, {

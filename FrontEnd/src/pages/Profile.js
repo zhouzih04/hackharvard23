@@ -59,7 +59,7 @@ export default function Profile( user_id ) {
                         {userOffers.map((listing, index) => (
                             <ListingCard
                                 picture_url={listing.picture_url}
-                                poser_id={listing.poster_id}
+                                poster_id={listing.poster_id}
                                 location={listing.location}
                                 item_name={listing.name}
                                 description={listing.description}
@@ -74,7 +74,7 @@ export default function Profile( user_id ) {
                         {userRequests.map((listing, index) => (
                                 <ListingCard
                                     picture_url={listing.picture_url}
-                                    poser_id={listing.poster_id}
+                                    poster_id={listing.poster_id}
                                     location={listing.location}
                                     item_name={listing.name}
                                     description={listing.description}
