@@ -7,8 +7,13 @@ import Profile from '../pages/Profile';
 import Login, {user} from  '../pages/Login';
 import { useNavigate } from "react-router-dom";
 
-function Navbar() {
+function Navbar(profile_id) {
     const navigate = useNavigate();
+    console.log(profile_id.user_id);
+    const ip = profile_id.user_id;
+    const redirect = () => {
+      navigate('../pages/Profile/id='+ip);
+    }
     return (
     <div
       className="flex w-full"
@@ -70,13 +75,8 @@ function Navbar() {
             flexDirection: 'row',
             justifyContent: 'space-between',
           }}
-          onClick={"go_to_profile"}
+          onClick={redirect}
         >
-          <script>
-            function go_to_profile() {
-              //ReactDOM.render(<Profile />, document.getElementById('root'))
-            }
-          </script>
           <Typography
             sx={{
               fontFamily: 'Kodchasan',
@@ -86,7 +86,7 @@ function Navbar() {
               paddingLeft: '0.5rem',
             }}
           > my profile </Typography>
-          <img src={profilepic} style={{paddingLeft: '0.5rem'}} onClick={navigate('../pages/Profile')}
+          <img src={profilepic} style={{paddingLeft: '0.5rem'}} onClick={redirect}
            alt="Profile" width='30px' height='30px'/>
         </div>
       </div>

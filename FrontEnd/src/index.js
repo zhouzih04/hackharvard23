@@ -4,9 +4,11 @@ import ReactDOM from 'react-dom';
 import './styles/index.css';
 import App from './App';
 import Login, {user} from './pages/Login';
+import { BrowserRouter } from 'react-router-dom';
 import PostForm from './pages/postForm';
 import reportWebVitals from './reportWebVitals';
 import Dashboard from './pages/Dashboard';
+import Profile from './pages/Profile';
 
 
 const root = ReactDOM.createRoot(document.getElementById('root'));
@@ -37,7 +39,9 @@ const Index = () => {
 
   return (
     <React.StrictMode>
+      <BrowserRouter>
       {Redirect()}
+      </BrowserRouter>
     </React.StrictMode>
   );
 };
@@ -46,6 +50,6 @@ const Index = () => {
   <Index />,
 );*/
 root.render(
-  <PostForm />,
+  <Index />,
 );
 
