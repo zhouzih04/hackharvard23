@@ -4,6 +4,7 @@ import ReactDOM from 'react-dom';
 import './styles/index.css';
 import App from './App';
 import Login, {user} from './pages/Login';
+import PostForm from './pages/postForm';
 import reportWebVitals from './reportWebVitals';
 import Dashboard from './pages/Dashboard';
 
@@ -41,6 +42,10 @@ const Index = () => {
   );
 };
 
-root.render(
+/**root.render(
   <Index />,
+);*/
+root.render(
+  <PostForm />,
 );
+
