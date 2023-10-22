@@ -17,6 +17,10 @@
     padding-top: 200px;
 }
 
+#dmContainer {
+    background-color: '#283240';
+}
+
 .smallerForm {
     align-items: center;
 }
