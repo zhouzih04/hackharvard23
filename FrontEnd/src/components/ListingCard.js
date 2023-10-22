@@ -11,6 +11,16 @@ export default function ListingCard({picture_url,
     item_name,
     description,
     price_range}) {
+        let price = '';
+        if (price_range == 0) {
+            price = 'Free';
+        } else if (price_range == 1) {
+            price = '$';
+        } else if (price_range == 2) {
+            price = '$$';
+        } else {
+            price = '$$$';
+        }
         return (
             <Card sx={{ flexBasis: '23%', 
             borderRadius: '1rem',
@@ -29,15 +39,16 @@ export default function ListingCard({picture_url,
                       variant="h5"
                       component="div"
                       sx={{ fontWeight: 600, fontSize: '1rem' }}
-                    >
-                      {location}
+                    >  
+                     <p>{item_name}</p>
+                      <p>{location}</p>
                   </Typography>
                   </Box>
                   <Typography variant="body2" color="text.secondary">
                     {description}
                   </Typography>
                   <Typography>
-                    <strong>${price_range}</strong> night
+                    <strong>{price}</strong> / day
                   </Typography>
                 </CardContent>
               </CardActionArea>

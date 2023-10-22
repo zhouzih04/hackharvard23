@@ -11,16 +11,16 @@ import Login, { user } from '../pages/Login';
 
 
 export default function Profile( ) {
-    const urlParams = new URLSearchParams(window.location.search);
-    const user_id = urlParams.get('id');
-    console.log(user_id);
-
+    // const urlParams = new URLSearchParams(window.location.search);
+    // const user_id = urlParams.get('id');
+    // console.log(user_id);
+    const user_id = '102636358572776184433';
     const [ userData, setUserData ] = useState({});
     useEffect(() => {
-        fetch(`http://localhost:3000/profile/${user_id}`)
+        fetch(`http://localhost:3000/profile/id=102636358572776184433`)
             .then(res => res.json())
             .then(resJson => setUserData(resJson));
-    }, [user_id]);
+    }, []);
     
 
     const navigate = useNavigate();
@@ -32,34 +32,34 @@ export default function Profile( ) {
     const userButton = () => {
         if (user_id == user) {
             return (
-                <Button variant='contained' sx={{borderRadius: '45px'}} onClick={redirect()}>
+                <Button variant='contained' style={{borderRadius: '45px'}} onClick={redirect()}>
                     Log Out
                 </Button>
             )
         } else {
             return (
-                <Button variant='contained' sx={{borderRadius: '45px'}}>
+                <Button variant='contained' style={{borderRadius: '45px'}}>
                     Start DM
                 </Button>
             )
         }
     }
 
-    const userOffers = userData.offers.slice(0, 6);
-    const userRequests = userData.requests.slice(0, 6);
+    // const userOffers = userData.offers.slice(0, 6);
+    // const userRequests = userData.requests.slice(0, 6);
 
     return(
-        <Container sx={{display: 'flex'}} >
+        <Container style={{display: 'flex'}} >
             <div className='userProfile'>
                 {/* <img src={userData.profile} width='141px'></img> */}
-                <div className='iconColor' width='140px' sx={{borderRadius: '70px'}} ></div>
+                <div className='iconColor' width='140px' style={{borderRadius: '70px'}} ></div>
                 <h1>{userData.displayName}</h1>
                 {userButton}
             </div>
             <div className='listings'>
                 <div className='userOffers'>
                     <Box>
-                        {userOffers.map((listing, index) => (
+                        {userData.offers?.map((listing, index) => (
                             <ListingCard
                                 picture_url={listing.picture_url}
                                 poser_id={listing.poster_id}
@@ -74,7 +74,7 @@ export default function Profile( ) {
                 </div>
                 <div className='userRequests'>
                     <Box>
-                        {userRequests.map((listing, index) => (
+                        {userData.requests?.map((listing, index) => (
                                 <ListingCard
                                     picture_url={listing.picture_url}
                                     poser_id={listing.poster_id}

@@ -29,7 +29,8 @@ router.post('/', async(req, res)=> {
         const id = newOffer._id.toString();
         newOffer.id = id;
         await newOffer.save();
-        res.status(201).json(newOffer);
+        res.status(301).redirect('http://localhost:3001/');
+  
     }catch(err) {
         res.status(400).json({message: err.message});
     }
