@@ -4,17 +4,19 @@ import { Box, Button, ButtonGroup, Modal } from '@mui/material';
 import { useNavigate } from "react-router-dom";
 
 export default function ItemCard( { itemId, type, handleClose }) {
+    console.log('hi');
     const [itemData, setItemData] = useState({});
     const [userData, setUserData] = useState({});
 
     const navigate = useNavigate();
     useEffect(() => {
             if (type=='offer') {
-                fetch(`https://localhost:3000/offer/${itemId}`)
+                fetch(`http://localhost:3000/offer/${itemId}`)
                 .then(res => res.json())
                 .then(resJson => {
+                    console.log(resJson);
                     setItemData(resJson);
-                    fetch(`https://localhost:3000/profile/${resJson.poster_id}`)
+                    fetch(`http://localhost:3000/profile/${resJson.poster_id}`)
                         .then(res => res.json())
                         .then(resJson => {
                             setUserData(resJson);
@@ -22,11 +24,11 @@ export default function ItemCard( { itemId, type, handleClose }) {
             
             });
             } else {
-                fetch(`https://localhost:3000/request/${itemId}`)
+                fetch(`http://localhost:3000/request/${itemId}`)
                 .then(res => res.json())
                 .then(resJson => {
                     setItemData(resJson);
-                    fetch(`https://localhost:3000/profile/${resJson.poster_id}`)
+                    fetch(`http://localhost:3000/profile/${resJson.poster_id}`)
                         .then(res => res.json())
                         .then(resJson => {
                             setUserData(resJson);

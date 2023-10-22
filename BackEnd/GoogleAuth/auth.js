@@ -1,6 +1,7 @@
 const express = require('express');
 const app = express();
 const router = express.Router()
+const querystring = require('querystring');
 const session = require('express-session');
 const user = require('../databases/user')
 
@@ -33,7 +34,8 @@ router.get('/success', async (req, res) => {
         existingUser.displayName = userProfile.displayName;
         await existingUser.save();
         console.log('user data updated: ',existingUser)
-        res.status(200).json(userProfile);
+        // res.status(200).json(userProfile);
+res.status(301).redirect('http://localhost:3001/?'+querystring.stringify(userProfile));
     }
     else{
         console.log(userProfile)
@@ -42,7 +44,8 @@ router.get('/success', async (req, res) => {
         try {
             const savedUser = await newUser.save()
             console.log('user data stored: ',savedUser)
-            res.status(200).json(userProfile);
+            // res.status(200).json(userProfile);
+res.status(301).redirect('http://localhost:3001/?'+querystring.stringify(userProfile));
         }
         catch(e)
         {

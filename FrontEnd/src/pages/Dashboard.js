@@ -14,20 +14,23 @@ import Navbar from '../components/navbar';
 import ItemCard from '../components/ItemCard';
 
 
-function Dashboard() {
+function Dashboard(user_id) {
     const [listData, setListData] = useState([]);
     useEffect(() => {
         fetch(`http://localhost:3000/home/offers`)
             .then(res => res.json())
-            .then(resJson => setListData(resJson.offers));
+            .then(resJson => setListData(resJson));
     }, []);
 
     const [selectedItemId, setSelectedItemId] = useState(null);
-
+    console.log(user_id.user_id);
+    if (user_id == null) {
+      return(<Login />);
+    }
   return (
     <div className="r">
       {selectedItemId && < ItemCard itemId={selectedItemId} type ='offer' handleClose={() => setSelectedItemId(null)} />}
-      <Navbar />
+      <Navbar user_id = {user_id.user_id}/>
       <Box sx={{ padding: '0 80px' }}>
         <Box sx={{ display: 'flex', alignItems: 'center' }}>
         </Box>

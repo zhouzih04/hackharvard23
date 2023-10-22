@@ -1,4 +1,5 @@
 import React from 'react';
+import '../styles/global.css';
 import { useEffect, useState } from 'react';
 import { useParams } from 'react-router-dom';
 import { useNavigate } from "react-router-dom";
@@ -9,20 +10,24 @@ import Login, { user } from '../pages/Login';
 
 
 
-export default function Profile( user_id ) {
-    // const { user_id } = useParams();
+export default function Profile( ) {
+    const urlParams = new URLSearchParams(window.location.search);
+    const user_id = urlParams.get('id');
+    console.log(user_id);
+
     const [ userData, setUserData ] = useState({});
     useEffect(() => {
-        fetch(`https://localhost:3000/profile/${user_id}`)
+        fetch(`http://localhost:3000/profile/${user_id}`)
             .then(res => res.json())
             .then(resJson => setUserData(resJson));
     }, [user_id]);
+    
 
     const navigate = useNavigate();
 
     //should contain user profile info, sales, requests, aggregated ratings
     const redirect = () => {
-        navigate('/Login');
+        navigate('/Login/action=logout');
     }
     const userButton = () => {
         if (user_id == user) {
@@ -39,8 +44,6 @@ export default function Profile( user_id ) {
             )
         }
     }
-
-    
 
     const userOffers = userData.offers.slice(0, 6);
     const userRequests = userData.requests.slice(0, 6);
