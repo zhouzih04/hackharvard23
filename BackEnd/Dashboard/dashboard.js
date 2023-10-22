@@ -8,6 +8,7 @@ const router = express.Router();
 router.get('/offers', async(req,res) => {
     try {
         const offers = await Offer.find({});
+        console.log(offers);
         res.status(200).json(offers);
     }catch(err) {
         res.status(400).json({message: err.message});
@@ -17,6 +18,7 @@ router.get('/offers', async(req,res) => {
 router.get('/requests', async(req,res) => {
     try {
         const requests = await Request.find({});
+        console.log(requests);
         res.status(200).json(requests);
     }catch(err) {
         res.status(400).json({message: err.message});
