@@ -49,6 +49,6 @@ const Index = () => {
   <Index />,
 );*/
 root.render(
-  <Index/>,
+  <DM/>,
 );
 

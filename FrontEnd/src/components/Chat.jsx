@@ -16,21 +16,13 @@ export default function Chat(){
     const [message, setMessage] = useState('');
 
     useEffect(() => {
-        console.log('Opening WebSocket');
-        webSocket.current = new WebSocket('ws://localhost:8080/chat');
-        const openWebSocket = () => {
-            webSocket.current.onopen = (event) => {
-                console.log('Open:', event);
-            }
-            webSocket.current.onclose = (event) => {
-                console.log('Close:', event);
-            }
-        }
-        openWebSocket();
-        return () => {
-            console.log('Closing WebSocket');
-            webSocket.current.close();
-        }
+        console.log('FETCHing from backend');
+        fetch('http://localhost:3000/api/chat')
+        .then(response => response.json())
+        .then(data => {
+            console.log('Data:', data);
+            setChatMessages(data);
+        })
     }, []);
 
     useEffect(() => {
@@ -64,9 +56,7 @@ export default function Chat(){
     const sendMessage = () => {
         if(user && message) {
             console.log('Send!');
-            webSocket.current.send(
-                JSON.stringify(new ChatMessageDto(user, message))
-            );
+            postMessage(JSON.stringify(new ChatMessageDto(user, message)));
             setMessage('');
         }
     };

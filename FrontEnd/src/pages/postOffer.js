@@ -6,7 +6,6 @@ import { useNavigate } from "react-router-dom";
 import TextField, { TextFieldProps } from '@mui/material/TextField';
 import Slider from '@mui/material/Slider';
 import { Box, Button } from '@mui/material';
-import CloudUploadIcon from '@mui/icons-material/CloudUpload';
 import { styled } from '@mui/material/styles';
 
 const VisuallyHiddenInput = styled('input')({
