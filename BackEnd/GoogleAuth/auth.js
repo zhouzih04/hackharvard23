@@ -35,7 +35,7 @@ router.get('/success', async (req, res) => {
         await existingUser.save();
         console.log('user data updated: ',existingUser)
         // res.status(200).json(userProfile);
-res.status(301).redirect('http://localhost:3001/?'+querystring.stringify(userProfile));
+        res.status(301).redirect('http://localhost:3001/?'+querystring.stringify(userProfile));
     }
     else{
         console.log(userProfile)
@@ -45,7 +45,7 @@ res.status(301).redirect('http://localhost:3001/?'+querystring.stringify(userPro
             const savedUser = await newUser.save()
             console.log('user data stored: ',savedUser)
             // res.status(200).json(userProfile);
-res.status(301).redirect('http://localhost:3001/?'+querystring.stringify(userProfile));
+            res.status(301).redirect('http://localhost:3001/?'+querystring.stringify(userProfile));
         }
         catch(e)
         {
