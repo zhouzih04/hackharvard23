@@ -13,6 +13,7 @@ import Navbar from '../components/navbar';
 
 import ItemCard from '../components/ItemCard';
 
+let userId = ''; 
 
 function Dashboard(user_id) {
     const [listData, setListData] = useState([]);
@@ -23,10 +24,15 @@ function Dashboard(user_id) {
     }, []);
 
     const [selectedItemId, setSelectedItemId] = useState(null);
-    console.log(user_id.user_id);
-    if (user_id == null) {
-      return(<Login />);
+    if(user_id != null && user_id != '') {
+        userId = user_id;
     }
+    // console.log(user_id.user_id);
+    // if (user_id == null) {
+    //   return(<Login />);
+    // }
+
+    console.log(listData);
   return (
     <div className="r">
       {selectedItemId && < ItemCard itemId={selectedItemId} type ='offer' handleClose={() => setSelectedItemId(null)} />}
@@ -46,6 +52,7 @@ function Dashboard(user_id) {
           {listData.map((listing, index) => (
             <Link onClick={() => setSelectedItemId(listing.id)}>
                 <ListingCard
+                picture_url={listing.picture_url}
                 location={listing.location}
                 description={listing.description}
                 price_range={listing.price_range}
@@ -62,3 +69,4 @@ function Dashboard(user_id) {
 }
 
 export default Dashboard;
+export const user2 = userId;

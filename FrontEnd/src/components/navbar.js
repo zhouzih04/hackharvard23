@@ -11,9 +11,10 @@ function Navbar(profile_id) {
     const navigate = useNavigate();
     console.log(profile_id.user_id);
     const ip = profile_id.user_id;
-    const redirect = () => {
-      navigate('../pages/Profile/id='+ip);
-    }
+    // const redirect = () => {
+    //     navigate('/view=0');
+        
+    // }
     return (
     <div
       className="flex w-full"
@@ -43,8 +44,9 @@ function Navbar(profile_id) {
           width='50px'
           height='50px'
         />
+        
       </div>
-      
+      <h1>SustainaSwap</h1>
       <div
         className="right corner"
         style={{
@@ -75,7 +77,7 @@ function Navbar(profile_id) {
             flexDirection: 'row',
             justifyContent: 'space-between',
           }}
-          onClick={redirect}
+        //   onClick={redirect}
         >
           <Typography
             sx={{
@@ -85,8 +87,9 @@ function Navbar(profile_id) {
               fontSize: '14px',
               paddingLeft: '0.5rem',
             }}
+            
           > my profile </Typography>
-          <img src={profilepic} style={{paddingLeft: '0.5rem'}} onClick={redirect}
+          <img src={profilepic} style={{paddingLeft: '0.5rem'}}
            alt="Profile" width='30px' height='30px'/>
         </div>
       </div>
