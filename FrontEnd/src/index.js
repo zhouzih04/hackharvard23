@@ -5,8 +5,11 @@ import './styles/index.css';
 import App from './App';
 import Login, {user} from './pages/Login';
 import PostForm from './pages/postForm';
+import PostOffer from './pages/postOffer';
+import PostRequest from './pages/postRequest';
 import reportWebVitals from './reportWebVitals';
 import Dashboard from './pages/Dashboard';
+import DM from './pages/DM';
 
 
 const root = ReactDOM.createRoot(document.getElementById('root'));
@@ -46,6 +49,6 @@ const Index = () => {
   <Index />,
 );*/
 root.render(
-  <PostForm />,
+  <Index/>,
 );
 
