@@ -48,24 +48,37 @@ function Login() {
     
     return (
             <div className='container' id='loginContainer'>
-            <script src="https://apis.google.com/js/platform.js" async defer></script>
-            <meta name="google-signin-client_id" content="286256665198-fvg7eai9vokvqi0tn0fkc5003ea83car.apps.googleusercontent.com">
+                <script src="https://apis.google.com/js/platform.js" async defer></script>
+                <meta name="google-signin-client_id" content="286256665198-fvg7eai9vokvqi0tn0fkc5003ea83car.apps.googleusercontent.com">
 
-            </meta>
-            <div className='title'>
-                <img src={logo} alt='logo' width='124'/>
-                <h1> Tool Kit</h1>
-            </div>
-            <div className='description'>
-                <p>We should have a slogan here.</p>
-                <p>Line 2 of slogan lol.</p>
-            </div>
+                </meta>
+                <div style={{textAlign: 'center'}}>
+                    <div className='title'>
+                        <img src={logo} alt='logo' width='112'/>
+                        <h1 style={{fontSize: '58px', margin: '30px'}}> SustainaSwap</h1>
+                    </div>
+                    <div className='description' style={{margin: '60px'}}>
+                        <p>Some people have too many tools, some people have none.</p>
+                        <p>Would you SustainaSwap with me?</p>
+                    </div>
 
-            <div id='googleButton' className="container">
-                <div className="jumbotron text-center text-primary">
-                    <a href="http://localhost:3000/auth/google" className="btn btn-danger"><span className="fa fa-google"></span> SignIn with Google</a>
+                    <div id='googleButton' className="container" 
+                            style={{
+
+                                borderRadius: '35px',
+                                backgroundColor: '#445C78',
+                                width: '300px',
+                                height: '25px',
+                                borderRadius: '80px',
+                                verticalAlign: 'middle',
+                                padding: '20px',
+                            }}>
+                        <div className="jumbotron text-center text-primary" style={{display: 'flex', alignItems: 'end', justifyContent: 'center'}}>
+                            <a href="http://localhost:3000/auth/google" className="btn btn-danger"
+                            style={{color: 'E6E9E3'}}> SignIn with Google</a>
+                        </div>
+                    </div>
                 </div>
-            </div>
             </div>
         
     

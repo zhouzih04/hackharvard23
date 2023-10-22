@@ -24,3 +24,13 @@
 .smallerForm {
     align-items: center;
 }
+
+a {
+    color: #E6E9E3;
+    text-decoration: none;
+}
+
+a:visited {
+    color: #E6E9E3;
+    text-decoration: none;
+}
