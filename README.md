@@ -1,6 +1,6 @@
 # SustainaSwap
 
-[Pasted Graphic.pdf](https://github.com/zhouzih04/hackharvard23/files/14339276/Pasted.Graphic.pdf)
+<img width="1411" alt="SustainaSwap" src="https://github.com/zhouzih04/hackharvard23/assets/46199489/59b570e5-cad6-49d2-911d-1c56e5cc2119">
 
 
 Inspiration
